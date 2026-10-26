@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Masajes y terapias de bienestar a domicilio con camilla y equipamiento profesional. Revisa los servicios Nanai y consulta disponibilidad.">
+    <meta name="theme-color" content="#4A2E18">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nanai | Masajes a domicilio">
+    <meta property="og:description" content="Tu espacio de bienestar, en la comodidad de tu hogar.">
+    <title>Nanai | Masajes a Domicilio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        buddhist: {
+                            50: '#FDFBF7',
+                            100: '#F7F1E3',
+                            200: '#EAD7B5',
+                            300: '#D5B782',
+                            600: '#8C6239',
+                            750: '#5C3A21',
+                            800: '#4A2E18',
+                            900: '#2C1A0E',
+                            saffron: '#D47A2A',
+                            maroon: '#6B2D20',
+                            gold: '#C5A059'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #2C1A0E;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .buddhist-gradient {
+            background: linear-gradient(135deg, #6B2D20 0%, #4A2E18 100%);
+        }
+        .saffron-gradient {
+            background: linear-gradient(135deg, #D47A2A 0%, #C5A059 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(107, 45, 32, 0.1), 0 10px 10px -5px rgba(107, 45, 32, 0.04);
+        }
+        :focus-visible { outline: 3px solid #D47A2A; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
+</head>
+<body class="bg-buddhist-50 text-buddhist-900 antialiased selection:bg-buddhist-200 selection:text-buddhist-900">
+
+    <!-- Notification Banner / Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-buddhist-900 text-buddhist-100 px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 border border-buddhist-gold/30">
+        <i class="fa-solid fa-circle-check text-buddhist-saffron text-xl"></i>
+        <div>
+            <h4 class="font-bold text-sm" id="toast-title">Mensaje</h4>
+            <p class="text-xs text-buddhist-200" id="toast-msg">Operación exitosa</p>
+        </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div class="buddhist-gradient text-buddhist-100 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+        <span><i class="fa-solid fa-house-chimney-medical mr-2 text-buddhist-saffron"></i> 🌸 ¡Llevamos la paz a tu hogar! Masajes a domicilio profesionales con camilla y aromaterapia incluida.</span>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-buddhist-50/90 backdrop-blur-md border-b border-buddhist-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-full buddhist-gradient flex items-center justify-center text-buddhist-100 shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-hands-praying text-xl text-buddhist-gold"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-serif font-bold text-buddhist-maroon tracking-wider">NANAI</span>
+                    <span class="block text-[10px] tracking-widest text-buddhist-600 uppercase font-semibold">Masajes a Domicilio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-buddhist-800">
+                <a href="#inicio" class="hover:text-buddhist-saffron transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-buddhist-saffron transition-colors">Masajes a Casa</a>
+                <a href="#como-funciona" class="hover:text-buddhist-saffron transition-colors">Cómo Funciona</a>
+                <a href="#filosofia" class="hover:text-buddhist-saffron transition-colors">Filosofía</a>
+                <a href="#contacto" class="hover:text-buddhist-saffron transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:block">
+                <button onclick="openBookingModal('Sesión General')" class="saffron-gradient text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-lg shadow-buddhist-saffron/20 hover:opacity-95 transition-all transform hover:-translate-y-0.5">
+                    Agendar a Domicilio
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-buddhist-maroon text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-buddhist-100 border-b border-buddhist-200 px-6 py-4 space-y-3">
+            <a href="#inicio" class="block text-buddhist-800 font-medium py-1">Inicio</a>
+            <a href="#servicios" class="block text-buddhist-800 font-medium py-1">Masajes a Casa</a>
+            <a href="#como-funciona" class="block text-buddhist-800 font-medium py-1">Cómo Funciona</a>
+            <a href="#filosofia" class="block text-buddhist-800 font-medium py-1">Filosofía</a>
+            <a href="#contacto" class="block text-buddhist-800 font-medium py-1">Contacto</a>
+            <button onclick="openBookingModal('Sesión General')" class="w-full mt-2 saffron-gradient text-white py-2.5 rounded-full font-medium text-sm text-center shadow">
+                Agendar a Domicilio
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Mascot -->
+    <section id="inicio" class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-buddhist-100/50 to-buddhist-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-buddhist-200/60 px-4 py-1.5 rounded-full text-buddhist-maroon text-xs font-semibold tracking-wider uppercase border border-buddhist-gold/30">
+                        <i class="fa-solid fa-house text-buddhist-saffron"></i>
+                        <span>Servicio profesional a la comodidad de tu hogar</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-buddhist-maroon leading-tight">
+                        Tu santuario de paz, directo en tu <span class="text-buddhist-saffron italic">hogar</span>
+                    </h1>
+                    <p class="text-lg text-buddhist-750 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Llevamos camilla profesional, música tibetana, aromaterapia y aceites orgánicos para transformar tu espacio en un refugio de bienestar absoluto. Cero estrés de traslado.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="openBookingModal('Masaje Relajante Ayurvédico')" class="w-full sm:w-auto saffron-gradient text-white px-8 py-3.5 rounded-full font-semibold shadow-xl shadow-buddhist-saffron/20 hover:scale-105 transition-transform flex items-center justify-center space-x-2">
+                            <span>Reservar a Domicilio</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <a href="#como-funciona" class="w-full sm:w-auto bg-transparent border-2 border-buddhist-maroon text-buddhist-maroon px-8 py-3.5 rounded-full font-semibold hover:bg-buddhist-maroon hover:text-white transition-all text-center">
+                            Cómo Funciona
+                        </a>
+                    </div>
+                    <!-- Stats / Trust markers -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-buddhist-200/60 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-bold font-serif text-buddhist-maroon">+1,500</span>
+                            <span class="text-xs text-buddhist-600 font-medium">Hogares Visitados</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-bold font-serif text-buddhist-maroon">100%</span>
+                            <span class="text-xs text-buddhist-600 font-medium">Equipamiento Pro</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-bold font-serif text-buddhist-maroon">4.9★</span>
+                            <span class="text-xs text-buddhist-600 font-medium">Calificación</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascot & Visual Column -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <!-- Background decorative mandala glow -->
+                    <div class="absolute w-72 h-72 sm:w-96 sm:h-96 bg-buddhist-gold/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+                    <div class="relative bg-white/80 p-6 rounded-3xl shadow-2xl border border-buddhist-200/80 backdrop-blur-sm max-w-sm w-full text-center group">
+                        <!-- Floating badge -->
+                        <div class="absolute -top-4 -right-4 buddhist-gradient text-buddhist-gold w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                            <i class="fa-solid fa-spa text-lg"></i>
+                        </div>
+                        <!-- Mascot Image -->
+                        <div class="overflow-hidden rounded-2xl bg-buddhist-100 mb-4 aspect-square flex items-center justify-center border border-buddhist-200">
+                            <img src="Gemini_Generated_Image_vctlevctlevctlev-removebg-preview.png" alt="Atención profesional de masajes a domicilio" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/400x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Atención a Domicilio</h3>
+                        <p class="text-xs text-buddhist-600 mt-1 mb-4">Terapeuta especialista con todo lo necesario para tu comodidad.</p>
+                        <div class="inline-flex items-center space-x-1 text-xs bg-buddhist-100 text-buddhist-maroon px-3 py-1 rounded-full font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping mr-1"></span>
+                            <span>Cobertura en toda la ciudad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="py-20 bg-buddhist-100/70 border-y border-buddhist-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-buddhist-saffron font-bold uppercase tracking-widest text-xs">Simple y Cómodo</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">¿Cómo Funciona el Masaje a Domicilio?</h2>
+                <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
+                <p class="text-buddhist-750 font-light">
+                    Nosotros nos encargamos de todo el montaje en tu sala o dormitorio para que tú solo te preocupes de recibir el descanso.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl font-serif font-bold shadow-md">
+                        1
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Eliges tu Masaje</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        Selecciona el ritual o terapia ideal en nuestra web y agenda indicando tu dirección y el horario de tu preferencia.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl font-serif font-bold shadow-md">
+                        2
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Llegamos con Todo</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        El terapeuta llega 15 minutos antes con camilla profesional, sábanas sanitizadas, aceites esenciales y música ambiental.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl font-serif font-bold shadow-md">
+                        3
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Disfrutas y Sanas</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        Disfrutas tu sesión al máximo sin agobios de tráfico al terminar, quedando en un estado de profunda relajación en casa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Masajes Section -->
+    <section id="servicios" class="py-20 bg-buddhist-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-buddhist-saffron font-bold uppercase tracking-widest text-xs">Terapias a Domicilio</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">Nuestros Rituales en tu Casa</h2>
+                <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
+                <p class="text-buddhist-750 font-light">
+                    Todos nuestros servicios a domicilio incluyen traslado, camilla, música y aromaterapia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/EAD7B5/6B2D20?text=Masaje+Relajante" alt="Masaje Relajante" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                60 / 90 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Masaje Relajante Nirvana</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Movimientos suaves y envolventes con aceites tibetanos tibios directo en la comodidad de tu hogar para calmar el sistema nervioso.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$38.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Masaje Relajante Nirvana')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/D5B782/4A2E18?text=Descontracturante" alt="Masaje Descontracturante" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                60 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Descontracturante Profundo</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Ideal para contracturas severas por teletrabajo o estrés. Técnica focalizada en capas profundas de tejido muscular a domicilio.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$43.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Descontracturante Profundo')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/C5A059/2C1A0E?text=Piedras+Calientes" alt="Piedras Calientes" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                75 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Ritual de Piedras Volcánicas</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Piedras basálticas portátiles calefaccionadas para fundir el estrés y calentar el cuerpo sin que tengas que salir de tu casa.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$48.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Ritual de Piedras Volcánicas')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/EAD7B5/5C3A21?text=Masaje+Ayurveda" alt="Masaje Ayurveda" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                60 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Abhyanga (Ayurveda a Casa)</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Masaje corporal con abundante aceite medicinal herbal caliente adaptado a tu constitución energética para desintoxicar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$45.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Abhyanga Ayurveda')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/D5B782/6B2D20?text=Reflexologia+Facial" alt="Reflexología" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                45 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Reflexología Podal y Facial</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Estimulación de puntos reflejos en pies y rostro para equilibrar órganos internos y liberar tensiones craneales en tu hogar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$33.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Reflexología Podal y Facial')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-buddhist-200 card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-buddhist-200 relative overflow-hidden">
+                            <img src="https://placehold.co/600x400/6B2D20/F7F1E3?text=Ritual+Nanai" alt="Ritual Nanai Completo" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F7F1E3/6B2D20?text=Nanai+Masajes'">
+                            <span class="absolute top-4 right-4 bg-buddhist-maroon text-buddhist-gold text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                120 min
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Gran Ritual Nanai a Domicilio</h3>
+                            <p class="text-sm text-buddhist-750">
+                                Experiencia total con exfoliación, baño tibetano de pies, masaje relajante completo con aceites esenciales y cuencos tibetanos en casa.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-buddhist-100 mt-4">
+                        <span class="font-bold text-buddhist-maroon text-lg">$68.000 <span class="text-xs font-normal text-buddhist-600">CLP</span></span>
+                        <button onclick="openBookingModal('Gran Ritual Nanai')" class="saffron-gradient text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:opacity-90 transition-opacity">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy / Buddhist Theme Section -->
+    <section id="filosofia" class="py-20 bg-buddhist-100/70 border-y border-buddhist-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-buddhist-saffron font-bold uppercase tracking-widest text-xs">Sabiduría Ancestral</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">El Camino de la Compasión y el Cuidado en Casa</h2>
+                <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
+                <p class="text-buddhist-750 font-light">
+                    En <strong class="font-semibold text-buddhist-maroon">Nanai</strong> entendemos que tu hogar es tu templo personal. Llevamos allí la armonía y el ritual sagrado de reconexión.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl shadow-md">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Presencia Plena (Mindfulness)</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        Cada movimiento de nuestras manos está impregnado de intención consciente para disipar el estrés acumulado en tu propia atmósfera.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl shadow-md">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Equilibrio Energético</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        Desbloqueamos los meridianos del cuerpo utilizando aceites esenciales puros y aromaterapia armónica inspirada en oriente.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover text-center space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-2xl shadow-md">
+                        <i class="fa-solid fa-peace"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Sin Estrés de Traslado</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">
+                        Olvídate del tráfico y el ruido exterior. Al terminar tu sesión, quedas directamente descansando en tu propio hogar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-buddhist-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-buddhist-saffron font-bold uppercase tracking-widest text-xs">Testimonios de Paz</span>
+                <h2 class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">Lo que dicen quienes reciben Nanai en casa</h2>
+                <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-buddhist-200 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-amber-500 flex space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-buddhist-750 italic">
+                            "Es maravilloso que traigan todo el equipo a la casa. El masaje descontracturante fue increíble y lo mejor es que al terminar pude quedarme durmiendo en mi propia cama."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 mt-6 border-t border-buddhist-100">
+                        <div class="w-10 h-10 rounded-full bg-buddhist-200 font-bold font-serif text-buddhist-maroon flex items-center justify-center">
+                            CM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-buddhist-maroon">Camila Morales</h4>
+                            <span class="text-xs text-buddhist-600">Cliente a Domicilio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-buddhist-200 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-amber-500 flex space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-buddhist-750 italic">
+                            "La puntualidad y profesionalismo son impecables. Traen una camilla muy cómoda y música que te transporta a un templo budista sin moverte de la sala."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 mt-6 border-t border-buddhist-100">
+                        <div class="w-10 h-10 rounded-full bg-buddhist-200 font-bold font-serif text-buddhist-maroon flex items-center justify-center">
+                            FV
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-buddhist-maroon">Felipe Valenzuela</h4>
+                            <span class="text-xs text-buddhist-600">Diseñador Gráfico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-buddhist-200 relative flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-amber-500 flex space-x-1 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-sm text-buddhist-750 italic">
+                            "Insuperable servicio. Las piedras calientes a domicilio superaron todas mis expectativas. Se nota la dedicación y el amor que ponen en cada detalle."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 mt-6 border-t border-buddhist-100">
+                        <div class="w-10 h-10 rounded-full bg-buddhist-200 font-bold font-serif text-buddhist-maroon flex items-center justify-center">
+                            AS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-buddhist-maroon">Andrea Soto</h4>
+                            <span class="text-xs text-buddhist-600">Terapeuta Ocupacional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contacto" class="buddhist-gradient text-buddhist-100 pt-16 pb-12 border-t border-buddhist-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-buddhist-saffron flex items-center justify-center text-buddhist-100 shadow-md">
+                            <i class="fa-solid fa-hands-praying text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-serif font-bold text-white tracking-wider">NANAI</span>
+                            <span class="block text-[9px] tracking-widest text-buddhist-200 uppercase font-semibold">Masajes a Domicilio</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-buddhist-200 leading-relaxed font-light">
+                        Llevamos la paz, la camilla y el bienestar directamente a tu hogar con la sabiduría y compasión de oriente.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-buddhist-saffron transition-colors"><i class="fa-brands fa-instagram text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-buddhist-saffron transition-colors"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-buddhist-saffron transition-colors"><i class="fa-brands fa-whatsapp text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-3">
+                    <h4 class="font-serif font-bold text-buddhist-gold text-base">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs text-buddhist-200 font-light">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition-colors">Masajes a Casa</a></li>
+                        <li><a href="#filosofia" class="hover:text-white transition-colors">Filosofía Budista</a></li>
+                    </ul>
+                </div>
+
+                <!-- Schedule -->
+                <div class="space-y-3">
+                    <h4 class="font-serif font-bold text-buddhist-gold text-base">Horarios de Atención</h4>
+                    <ul class="space-y-2 text-xs text-buddhist-200 font-light">
+                        <li class="flex justify-between"><span>Lunes a Sábado:</span> <span class="font-medium text-white">09:00 - 21:00</span></li>
+                        <li class="flex justify-between"><span>Domingos:</span> <span class="font-medium text-white">10:00 - 18:00</span></li>
+                        <li class="flex justify-between"><span>Cobertura:</span> <span class="font-medium text-white">Toda la comuna</span></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-3">
+                    <h4 class="font-serif font-bold text-buddhist-gold text-base">Reservas & Cobertura</h4>
+                    <ul class="space-y-2 text-xs text-buddhist-200 font-light">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-house-chimney text-buddhist-saffron mt-0.5"></i>
+                            <span>Atención a domicilio en toda la Región</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-phone text-buddhist-saffron"></i>
+                            <span>+56 9 8765 4321</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-envelope text-buddhist-saffron"></i>
+                            <span>domicilios@nanaimasajes.cl</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center text-xs text-buddhist-300 font-light">
+                <p>&copy; 2026 Nanai Masajes a Domicilio. Todos los derechos reservados. Armonía en tu hogar.</p>
+                <p class="mt-2">Precios, cobertura, horarios y datos de contacto sujetos a confirmación con Nanai.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-describedby="modal-subtitle" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+        <div class="bg-buddhist-50 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-buddhist-gold/30 relative transform transition-all">
+            <!-- Close Button -->
+            <button type="button" aria-label="Cerrar formulario de reserva" onclick="closeBookingModal()" class="absolute top-5 right-5 text-buddhist-750 hover:text-buddhist-maroon text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 rounded-full buddhist-gradient mx-auto flex items-center justify-center text-buddhist-gold text-lg shadow">
+                    <i class="fa-solid fa-house-medical"></i>
+                </div>
+                <h3 id="booking-title" class="font-serif font-bold text-2xl text-buddhist-maroon">Consultar disponibilidad</h3>
+                <p class="text-xs text-buddhist-750" id="modal-subtitle">Completa tus datos. Se abrirá un correo con tu solicitud; la reserva queda pendiente de confirmación.</p>
+            </div>
+
+            <!-- Booking Form -->
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Nombre y Apellido</label>
+                    <input type="text" id="client-name" required class="w-full px-4 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900" placeholder="Ej. Sofía Valdés">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
+                        <input type="tel" id="client-phone" required class="w-full px-4 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900" placeholder="+56 9 ...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Servicio</label>
+                        <select id="service-select" class="w-full px-3 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900">
+                            <option value="Masaje Relajante Nirvana">Masaje Relajante Nirvana</option>
+                            <option value="Descontracturante Profundo">Descontracturante Profundo</option>
+                            <option value="Ritual de Piedras Volcánicas">Ritual de Piedras Volcánicas</option>
+                            <option value="Abhyanga Ayurveda">Abhyanga Ayurveda</option>
+                            <option value="Reflexología Podal y Facial">Reflexología Podal y Facial</option>
+                            <option value="Gran Ritual Nanai">Gran Ritual Nanai</option>
+                            <option value="Sesión General">Sesión General</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Dirección (Calle, Número, Depto / Comuna)</label>
+                    <input type="text" id="client-address" required class="w-full px-4 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900" placeholder="Ej. Av. Principal 456, Depto 302">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Fecha</label>
+                        <input type="date" id="booking-date" required class="w-full px-4 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Hora Preferida</label>
+                        <select id="booking-time" required class="w-full px-3 py-2.5 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900">
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:30 AM">11:30 AM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-buddhist-800 uppercase tracking-wider mb-1">Notas especiales (Opcional)</label>
+                    <textarea id="client-notes" rows="2" class="w-full px-4 py-2 rounded-xl border border-buddhist-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-buddhist-saffron text-buddhist-900" placeholder="Indicaciones de estacionamiento, dolencias..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full saffron-gradient text-white py-3 rounded-xl font-semibold text-sm shadow-lg shadow-buddhist-saffron/20 hover:opacity-95 transition-all mt-2">
+                    Enviar solicitud por correo
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Abrir menú');
+            });
+        });
+
+        // Modal Controls
+        const bookingModal = document.getElementById('booking-modal');
+        const serviceSelect = document.getElementById('service-select');
+
+        function openBookingModal(serviceName) {
+            if (serviceName && serviceSelect) {
+                serviceSelect.value = serviceName;
+            }
+            bookingModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('client-name').focus();
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('booking-date').min = today;
+            document.getElementById('booking-date').value = today;
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.add('hidden');
+            document.body.style.overflow = ''; 
+        }
+
+        // Escape closes the dialog; clicking the backdrop also closes it.
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !bookingModal.classList.contains('hidden')) closeBookingModal();
+        });
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+
+        // Request handler: open a prefilled WhatsApp message; booking awaits confirmation.
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const whatsappDestino = '56989878687';
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const service = serviceSelect.value;
+            const address = document.getElementById('client-address').value.trim();
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            const notes = document.getElementById('client-notes').value.trim() || 'Sin notas';
+            const body = `Hola Nanai, quisiera consultar disponibilidad para una sesión.\n\nNombre: ${name}\nTeléfono: ${phone}\nServicio: ${service}\nDirección/comuna: ${address}\nFecha preferida: ${date}\nHora preferida: ${time}\nNotas: ${notes}\n\nEntiendo que la reserva queda pendiente de confirmación.`;
+            window.open(`https://wa.me/${whatsappDestino}?text=${encodeURIComponent(body)}`, '_blank', 'noopener,noreferrer');
+            closeBookingModal();
+            document.getElementById('booking-form').reset();
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = 'Solicitud preparada';
+            document.getElementById('toast-msg').innerText = 'Se abrirá WhatsApp con tu solicitud. La cita queda pendiente de confirmación.';
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            window.setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 7000);
+        }
+
+    </script>
+</body>
+</html>
