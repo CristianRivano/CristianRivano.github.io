@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conoce los servicios de masaje Nanai y consulta por WhatsApp disponibilidad, cobertura y valores vigentes.">
+    <meta name="description" content="Masajes en Talca a domicilio: sesiones relajantes y descontracturantes. Consulta disponibilidad, cobertura y valores por WhatsApp.">
     <link rel="canonical" href="https://cristianrivano.github.io/">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#4A2E18">
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon.svg?v=20261026" type="image/svg+xml" sizes="any">
+    <link rel="shortcut icon" href="/assets/favicon.svg?v=20261026" type="image/svg+xml">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Nanai | Masajes a domicilio">
-    <meta property="og:description" content="Conoce los servicios de masaje Nanai y consulta disponibilidad por WhatsApp.">
+    <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Nanai">
+    <meta property="og:title" content="Masajes en Talca a Domicilio | Nanai">
+    <meta property="og:description" content="Masajes en Talca a domicilio: sesiones relajantes y descontracturantes. Consulta disponibilidad y valores por WhatsApp.">
     <meta property="og:url" content="https://cristianrivano.github.io/">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nanai | Masajes a Domicilio">
-    <meta name="twitter:description" content="Consulta disponibilidad, cobertura y valores vigentes por WhatsApp.">
-    <title>Nanai | Masajes a Domicilio</title>
+    <meta name="twitter:title" content="Masajes en Talca a Domicilio | Nanai">
+    <meta name="twitter:description" content="Masajes relajantes y descontracturantes en Talca. Consulta disponibilidad y valores por WhatsApp.">
+    <title>Masajes en Talca a Domicilio | Nanai</title>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Organization","name":"Nanai Masajes a Domicilio","url":"https://cristianrivano.github.io/","telephone":"+56989878687","description":"Servicios de masaje a domicilio. Consultas de disponibilidad, cobertura y valores por WhatsApp."}
+    {"@context":"https://schema.org","@type":"Organization","@id":"https://cristianrivano.github.io/#organization","name":"Nanai Masajes a Domicilio","url":"https://cristianrivano.github.io/","telephone":"+56989878687","description":"Masajes relajantes y descontracturantes a domicilio en Talca. Consulta disponibilidad y valores por WhatsApp.","areaServed":{"@type":"City","name":"Talca","containedInPlace":{"@type":"AdministrativeArea","name":"Región del Maule, Chile"}},"contactPoint":{"@type":"ContactPoint","telephone":"+56989878687","contactType":"consultas y reservas","availableLanguage":"Spanish"}}
     </script>
 
     <link rel="stylesheet" href="/assets/site.min.css">
@@ -62,31 +65,33 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-buddhist-800">
+            <nav class="hidden lg:flex items-center space-x-5 font-medium text-sm text-buddhist-800">
                 <a href="#inicio" class="hover:text-buddhist-saffron transition-colors">Inicio</a>
                 <a href="#servicios" class="hover:text-buddhist-saffron transition-colors">Masajes a Casa</a>
+                <a href="#beneficios" class="hover:text-buddhist-saffron transition-colors">Beneficios</a>
                 <a href="#como-funciona" class="hover:text-buddhist-saffron transition-colors">Cómo Funciona</a>
                 <a href="#filosofia" class="hover:text-buddhist-saffron transition-colors">Filosofía</a>
                 <a href="#contacto" class="hover:text-buddhist-saffron transition-colors">Contacto</a>
             </nav>
 
             <!-- Action Button -->
-            <div class="hidden md:block">
+            <div class="hidden lg:block">
                 <button onclick="openBookingModal('Sesión General')" class="saffron-gradient text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-lg shadow-buddhist-saffron/20 hover:opacity-95 transition-all transform hover:-translate-y-0.5">
                     Agendar a Domicilio
                 </button>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-buddhist-maroon text-2xl p-2">
+            <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden text-buddhist-maroon text-2xl p-2">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-buddhist-100 border-b border-buddhist-200 px-6 py-4 space-y-3">
+        <div id="mobile-menu" class="hidden lg:hidden bg-buddhist-100 border-b border-buddhist-200 px-6 py-4 space-y-3">
             <a href="#inicio" class="block text-buddhist-800 font-medium py-1">Inicio</a>
             <a href="#servicios" class="block text-buddhist-800 font-medium py-1">Masajes a Casa</a>
+            <a href="#beneficios" class="block text-buddhist-800 font-medium py-1">Beneficios</a>
             <a href="#como-funciona" class="block text-buddhist-800 font-medium py-1">Cómo Funciona</a>
             <a href="#filosofia" class="block text-buddhist-800 font-medium py-1">Filosofía</a>
             <a href="#contacto" class="block text-buddhist-800 font-medium py-1">Contacto</a>
@@ -105,13 +110,13 @@
                 <div class="lg:col-span-12 space-y-6 text-center">
                     <div class="inline-flex items-center space-x-2 bg-buddhist-200/60 px-4 py-1.5 rounded-full text-buddhist-maroon text-xs font-semibold tracking-wider uppercase border border-buddhist-gold/30">
                         <i class="fa-solid fa-house text-buddhist-saffron"></i>
-                        <span>Masajes a domicilio · atención con reserva previa</span>
+                        <span>Masajes en Talca · atención a domicilio</span>
                     </div>
                     <h1 class="max-w-5xl mx-auto text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-buddhist-maroon leading-tight">
-                        Tu santuario de paz, directo en tu <span class="text-buddhist-saffron italic">hogar</span>
+                        Masajes en Talca a domicilio, en la comodidad de tu <span class="text-buddhist-saffron italic">hogar</span>
                     </h1>
                     <p class="text-lg text-buddhist-750 font-light max-w-2xl mx-auto leading-relaxed">
-                        Consulta por WhatsApp los servicios disponibles, valores vigentes y comunas de atención. Coordinaremos los detalles antes de confirmar tu solicitud.
+                        Consulta por WhatsApp disponibilidad, cobertura y valores de nuestros masajes relajantes y descontracturantes en Talca.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                         <button onclick="openBookingModal('Masaje Relajante Nirvana')" class="w-full sm:w-auto saffron-gradient text-white px-8 py-3.5 rounded-full font-semibold shadow-xl shadow-buddhist-saffron/20 hover:scale-105 transition-transform flex items-center justify-center space-x-2">
@@ -191,7 +196,7 @@
                 <h2 class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">Masajes en la comodidad de tu hogar</h2>
                 <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
                 <p class="text-buddhist-750 font-light">
-                    Consulta por WhatsApp qué incluye cada servicio, su disponibilidad y el valor vigente.
+                    Conoce los masajes disponibles en Talca y consulta por WhatsApp sus características, valores y disponibilidad.
                 </p>
             </div>
 
@@ -239,6 +244,40 @@
                 </div>
 
 
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Massage benefits and pain-relief information -->
+    <section id="beneficios" class="py-20 bg-buddhist-100/70 border-y border-buddhist-200" aria-labelledby="beneficios-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+                <span class="text-buddhist-saffron font-bold uppercase tracking-widest text-xs">Información para tu bienestar</span>
+                <h2 id="beneficios-title" class="text-3xl sm:text-4xl font-bold font-serif text-buddhist-maroon">Beneficios del masaje: ¿qué molestias puede ayudar a aliviar?</h2>
+                <div class="w-20 h-1 bg-buddhist-gold mx-auto rounded-full"></div>
+                <p class="text-buddhist-750 font-light">El masaje puede proporcionar alivio temporal a algunas personas. Sus efectos varían según la persona y el tipo de molestia; no diagnostica ni reemplaza la atención de salud.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover space-y-4">
+                    <div class="w-14 h-14 rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-xl shadow-md" aria-hidden="true"><i class="fa-solid fa-person-circle-check"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Tensión en cuello y hombros</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">Puede ayudar a aliviar algunas molestias de cuello y hombros, generalmente por un periodo corto. La respuesta varía entre personas.</p>
+                </article>
+                <article class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover space-y-4">
+                    <div class="w-14 h-14 rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-xl shadow-md" aria-hidden="true"><i class="fa-solid fa-person-walking"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Algunas molestias lumbares</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">En ciertos casos puede aportar alivio a corto plazo. La evidencia para el dolor lumbar es limitada, así que no se puede asegurar un resultado.</p>
+                </article>
+                <article class="bg-buddhist-50 p-8 rounded-2xl shadow-sm border border-buddhist-200 card-hover space-y-4">
+                    <div class="w-14 h-14 rounded-2xl buddhist-gradient flex items-center justify-center text-buddhist-gold text-xl shadow-md" aria-hidden="true"><i class="fa-solid fa-spa"></i></div>
+                    <h3 class="font-serif font-bold text-xl text-buddhist-maroon">Relajación y pausa</h3>
+                    <p class="text-sm text-buddhist-750 leading-relaxed">Una sesión puede ser un momento de descanso y bienestar. No constituye tratamiento para una enfermedad ni reemplaza indicaciones profesionales.</p>
+                </article>
+            </div>
+            <div class="max-w-4xl mx-auto mt-10 rounded-2xl border border-buddhist-gold/40 bg-white/70 p-6 text-sm text-buddhist-750 leading-relaxed">
+                <p><strong class="text-buddhist-maroon">Importante:</strong> consulta con un profesional de salud si el dolor es intenso, persistente, apareció tras una lesión o viene acompañado de otros síntomas. Informa a Nanai sobre lesiones, embarazo, enfermedades o medicamentos antes de coordinar.</p>
+                <p class="mt-3 text-xs">Fuentes: <a class="underline hover:text-buddhist-maroon" href="https://www.nccih.nih.gov/health/massage-therapy-what-you-need-to-know" target="_blank" rel="noopener noreferrer">NCCIH, información sobre masaje y dolor</a>; <a class="underline hover:text-buddhist-maroon" href="https://www.nccih.nih.gov/health/low-back-pain-and-complementary-health-approaches-what-you-need-to-know" target="_blank" rel="noopener noreferrer">NCCIH, dolor lumbar y enfoques complementarios</a>; <a class="underline hover:text-buddhist-maroon" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3950594/" target="_blank" rel="noopener noreferrer">revisión sistemática sobre masaje y dolor cervical</a>.</p>
             </div>
         </div>
     </section>
@@ -316,11 +355,11 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3"><div class="w-10 h-10 rounded-full bg-buddhist-saffron flex items-center justify-center text-buddhist-100 shadow-md"><i class="fa-solid fa-hands-praying text-lg" aria-hidden="true"></i></div><div><span class="text-xl font-serif font-bold text-white tracking-wider">NANAI</span><span class="block text-[9px] tracking-widest text-buddhist-200 uppercase font-semibold">Masajes a Domicilio</span></div></div>
-                    <p class="text-sm text-buddhist-200 leading-relaxed">Consulta servicios, cobertura y valores vigentes directamente por WhatsApp.</p>
+                    <p class="text-sm text-buddhist-200 leading-relaxed">Masajes a domicilio en Talca. Consulta servicios, cobertura y valores vigentes directamente por WhatsApp.</p>
                 </div>
                 <div class="space-y-3">
                     <h4 class="font-serif font-bold text-buddhist-gold text-base">Explora</h4>
-                    <ul class="space-y-2 text-sm text-buddhist-200"><li><a href="#servicios" class="hover:text-white">Servicios</a></li><li><a href="#como-funciona" class="hover:text-white">Cómo funciona</a></li><li><a href="#filosofia" class="hover:text-white">Nuestra propuesta</a></li></ul>
+                    <ul class="space-y-2 text-sm text-buddhist-200"><li><a href="#servicios" class="hover:text-white">Servicios</a></li><li><a href="#beneficios" class="hover:text-white">Beneficios</a></li><li><a href="#como-funciona" class="hover:text-white">Cómo funciona</a></li><li><a href="#filosofia" class="hover:text-white">Nuestra propuesta</a></li></ul>
                 </div>
                 <div class="space-y-3">
                     <h4 class="font-serif font-bold text-buddhist-gold text-base">Consulta de agenda</h4>
