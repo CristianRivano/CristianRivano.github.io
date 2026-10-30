@@ -50,10 +50,12 @@ input::placeholder,textarea::placeholder { color:#451C0C;opacity:1; }
 @media (min-width:640px) { .toast-overlay-position { right:1.25rem; } }
 @media (max-width:480px) {
   .whatsapp-fab { width:3.5rem;height:3.5rem;min-height:3.5rem;padding:0;border-radius:50%; }
-  .whatsapp-fab-label { display:none; }
+  .whatsapp-fab-label { position:absolute;right:calc(100% + .75rem);top:50%;display:inline-flex;align-items:center;white-space:nowrap;padding:.55rem .85rem;border-radius:9999px;background:#3B141A;color:#FDF3E7;font-size:.75rem;box-shadow:0 8px 18px rgba(27,8,11,.28);opacity:0;visibility:hidden;transform:translateY(-50%) translateX(.35rem);transition:opacity .2s ease,transform .2s ease,visibility .2s ease; }
+  .whatsapp-fab.is-attention .whatsapp-fab-label { opacity:1;visibility:visible;transform:translateY(-50%) translateX(0); }
 }
 
 
 /* Prevent sticky navigation from covering in-page section headings. */
 section[id],footer[id] { scroll-margin-top:6rem; }
+details[id] { scroll-margin-top:6rem; }
 footer ul a { display:inline-flex;min-height:2.75rem;align-items:center; }
