@@ -23,7 +23,7 @@ input::placeholder,textarea::placeholder { color:#451C0C;opacity:1; }
 
 /* Decorative parallax layers for the hero; static gradients remain as a fallback. */
 #inicio { isolation:isolate;view-timeline-name:--nanai-hero-scroll;view-timeline-axis:block; }
-#inicio::before,#inicio::after { content:'';position:absolute;z-index:0;pointer-events:none;border-radius:50%;will-change:transform; }
+#inicio::before,#inicio::after { content:'';position:absolute;z-index:0;pointer-events:none;border-radius:50%; }
 #inicio::before { width:24rem;height:24rem;top:-9rem;right:-8rem;background:radial-gradient(circle,rgba(229,168,83,.26) 0%,rgba(229,168,83,0) 72%); }
 #inicio::after { width:30rem;height:30rem;bottom:-16rem;left:-12rem;background:radial-gradient(circle,rgba(212,122,154,.18) 0%,rgba(212,122,154,0) 72%); }
 #inicio > .max-w-7xl { position:relative;z-index:1; }
@@ -52,3 +52,8 @@ input::placeholder,textarea::placeholder { color:#451C0C;opacity:1; }
   .whatsapp-fab { width:3.5rem;height:3.5rem;min-height:3.5rem;padding:0;border-radius:50%; }
   .whatsapp-fab-label { display:none; }
 }
+
+
+/* Prevent sticky navigation from covering in-page section headings. */
+section[id],footer[id] { scroll-margin-top:6rem; }
+footer ul a { display:inline-flex;min-height:2.75rem;align-items:center; }
